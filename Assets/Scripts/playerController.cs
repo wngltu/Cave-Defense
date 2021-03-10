@@ -16,8 +16,12 @@ public class playerController : MonoBehaviour
 
     public TextMeshProUGUI wintext;
     public GameObject panel;
+
+    public static playerController Instance;
     void Start()
     {
+        Instance = this;
+
         currentHealth = maxHealth;
         healthBar.maxValue = maxHealth;
         healthBar.value = maxHealth;
@@ -63,6 +67,5 @@ public class playerController : MonoBehaviour
 
         healthBar.value = currentHealth;
     }
-
 
 }

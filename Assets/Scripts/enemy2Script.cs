@@ -13,9 +13,9 @@ public class enemy2Script : MonoBehaviour
     float scrollSpeed = .5f;
 
 
-    //public Slider healthBar;
-    //public int maxHealth = 5;
-    //public int currentHealth = 5;
+    public Slider enemy2healthBar;
+    public int maxHealth = 5;
+    public int currentHealth = 5;
 
     Renderer rend;
 
@@ -24,9 +24,9 @@ public class enemy2Script : MonoBehaviour
         basecoord = GameObject.Find("base").GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
 
-        //currentHealth = maxHealth;
-        // healthBar.maxValue = maxHealth;
-        //healthBar.value = maxHealth;
+        currentHealth = maxHealth;
+        enemy2healthBar.maxValue = maxHealth;
+        enemy2healthBar.value = maxHealth;
 
         rend = GetComponent<Renderer>();
 
@@ -37,19 +37,44 @@ public class enemy2Script : MonoBehaviour
     {
         agent.destination = basecoord.position;
 
-        float offset = Time.time * scrollSpeed;
-        rend.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            TakeDamage(5);
+        }
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+            enemySpawner.Instance.enemy2Killed++;
+        }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("bullet1"))
+        {
+            TakeDamage(5);
+        }
+        if (other.gameObject.CompareTag("bullet2"))
+        {
+            TakeDamage(15);
+        }
+    }
     private void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.CompareTag("base"))
         {
             Destroy(gameObject);
+            enemySpawner.Instance.enemy2Killed++;
         }
         if (col.gameObject.layer == 8)
         {
             Physics.IgnoreCollision(col.gameObject.GetComponent<Collider>(), GetComponent<Collider>());
         }
+    }
+    void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+
+        enemy2healthBar.value = currentHealth;
     }
 }

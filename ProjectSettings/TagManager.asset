@@ -9,6 +9,10 @@ TagManager:
   - enemy1
   - enemy2
   - enemy3
+  - enemy4
+  - enemytarget
+  - bullet1
+  - bullet2
   layers:
   - Default
   - TransparentFX
