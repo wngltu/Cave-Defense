@@ -14,8 +14,8 @@ public class enemy2Script : MonoBehaviour
 
 
     public Slider enemy2healthBar;
-    public int maxHealth = 5;
-    public int currentHealth = 5;
+    public int maxHealth = 10;
+    public int currentHealth = 10;
 
     Renderer rend;
 
@@ -24,9 +24,9 @@ public class enemy2Script : MonoBehaviour
         basecoord = GameObject.Find("base").GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
 
-        currentHealth = maxHealth;
-        enemy2healthBar.maxValue = maxHealth;
-        enemy2healthBar.value = maxHealth;
+        currentHealth = 10;
+        enemy2healthBar.maxValue = 10;
+        enemy2healthBar.value = 10;
 
         rend = GetComponent<Renderer>();
 
@@ -37,10 +37,10 @@ public class enemy2Script : MonoBehaviour
     {
         agent.destination = basecoord.position;
 
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            TakeDamage(5);
-        }
+        //if (Input.GetKeyDown(KeyCode.F))
+        //{
+       //     TakeDamage(5);
+        //}
         if (currentHealth <= 0)
         {
             Destroy(gameObject);

@@ -11,17 +11,17 @@ public class enemy3Script : MonoBehaviour
     public Transform basecoord;
 
     public Slider enemyhealthBar;
-    public int maxHealth = 50;
-    public int currentHealth = 50;
+    public int maxHealth = 150;
+    public int currentHealth = 150;
 
     void Start()
     {
         basecoord = GameObject.Find("base").GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
 
-        currentHealth = maxHealth;
-        enemyhealthBar.maxValue = maxHealth;
-        enemyhealthBar.value = maxHealth;
+        currentHealth = 150;
+        enemyhealthBar.maxValue = 150;
+        enemyhealthBar.value = 150;
 
     }
 
@@ -29,10 +29,10 @@ public class enemy3Script : MonoBehaviour
     {
         agent.destination = basecoord.position;
 
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            TakeDamage(5);
-        }
+        //if (Input.GetKeyDown(KeyCode.F))
+        //{
+        //    TakeDamage(5);
+        //}
         if (currentHealth <= 0)
         {
             Destroy(gameObject);

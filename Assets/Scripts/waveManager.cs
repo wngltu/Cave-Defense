@@ -68,6 +68,8 @@ public class waveManager : MonoBehaviour
         }
         else if (waveNum == 5)
         {
+            enemySpawner.Instance.amtEnemy1 = 5;
+            enemySpawner.Instance.amtEnemy2 = 5;
             enemySpawner.Instance.amtEnemy3 = 1;
             wavetext.text = "Wave 5";
         }
@@ -76,6 +78,7 @@ public class waveManager : MonoBehaviour
             enemySpawner.Instance.amtEnemy1 = 5;
             enemySpawner.Instance.amtEnemy2 = 5;
             enemySpawner.Instance.amtEnemy4 = 1;
+            enemySpawner.Instance.amtEnemy3 = 0;
             wavetext.text = "Wave 6";
         }
         else if (waveNum == 7)

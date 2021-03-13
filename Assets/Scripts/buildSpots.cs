@@ -23,7 +23,7 @@ public class buildSpots : MonoBehaviour
             turret = (GameObject)Instantiate(turret, transform.position + positionOffset, transform.rotation);
             playerController.Instance.currentEnergy -= 50;
             occupied = true;
-            Invoke("unoccupy", 30f);
+            Invoke("unoccupy", 45f);
         }
         if (!occupied && playerController.Instance.currentEnergy >= 100 && buildScript.Instance.buildselected == 2)
         {
@@ -31,7 +31,7 @@ public class buildSpots : MonoBehaviour
             turret = (GameObject)Instantiate(turret, transform.position + positionOffset, transform.rotation);
             playerController.Instance.currentEnergy -= 100;
             occupied = true;
-            Invoke("unoccupy", 30f);
+            Invoke("unoccupy", 60f);
         }
     }
 

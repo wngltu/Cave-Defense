@@ -20,7 +20,7 @@ public class turret2Script : MonoBehaviour
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, .5f);
-        Destroy(gameObject, 30f);
+        Destroy(gameObject, 60f);
     }
 
     // Update is called once per frame

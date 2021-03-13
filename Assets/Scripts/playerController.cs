@@ -11,10 +11,12 @@ public class playerController : MonoBehaviour
     public int currentHealth = 100;
 
     public Slider energyBar;
-    public float maxEnergy = 100;
-    public float currentEnergy = 50;
+    public float maxEnergy = 150;
+    public float currentEnergy = 100;
 
     public TextMeshProUGUI wintext;
+    public Text hptext;
+    public Text energytext;
     public GameObject panel;
 
     public static playerController Instance;
@@ -26,9 +28,9 @@ public class playerController : MonoBehaviour
         healthBar.maxValue = maxHealth;
         healthBar.value = maxHealth;
 
-        currentEnergy = 50;
-        energyBar.maxValue = maxEnergy;
-        energyBar.value = 50;
+        currentEnergy = 100;
+        energyBar.maxValue = 150;
+        energyBar.value = 100;
     }
 
     void Update()
@@ -39,11 +41,13 @@ public class playerController : MonoBehaviour
             panel.SetActive(true);
             wintext.text = "Game Over";
         }
-        if (currentEnergy <= 100)
+        if (currentEnergy <= 150)
         {
-            currentEnergy = currentEnergy + (Time.deltaTime * 3);
+            currentEnergy = currentEnergy + (Time.deltaTime * 4);
             energyBar.value = currentEnergy;
+            energytext.text = energyBar.value.ToString();
         }
+        hptext.text = healthBar.value.ToString();
     }
 
     private void OnCollisionEnter(Collision col)
